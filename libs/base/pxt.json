@@ -1,6 +1,7 @@
 {
     "name": "base",
     "description": "The base library",
+    "dependencies": {},
     "files": [
         "README.md",
         "pxt-core.d.ts",
@@ -37,12 +38,9 @@
         "controlmessage.ts",
         "perfcounters.ts"
     ],
-    "testFiles": [
-        "test.ts"
-    ],
+    "testFiles": ["test.ts"],
     "public": true,
     "partial": true,
-    "dependencies": {},
     "yotta": {
         "optionalConfig": {
             "PXT_GC_CHECKS": 0
