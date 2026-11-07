@@ -230,6 +230,7 @@ static VMImage *loadSections(VMImage *img) {
             img->numNumberLiterals = (sect->size >> 3) - 1;
             uint64_t *values = (uint64_t *)sect->data;
 
+#ifdef PXT32
             int numBoxed = 0;
 
             for (unsigned i = 0; i < img->numNumberLiterals; ++i) {
@@ -251,6 +252,9 @@ static VMImage *loadSections(VMImage *img) {
 
             CHECK(numberBoxes->size >= sizeof(VMImageSection) + (numBoxed + 1) * 12, 1063);
             CHECK(numberBoxes->size <= 4 + sizeof(VMImageSection) + (numBoxed + 1) * 12, 1063);
+#else
+            (void)numberBoxes;
+#endif
 
             img->numberLiterals = ALLOC_ARRAY(TValue, img->numNumberLiterals);
 #ifdef PXT32

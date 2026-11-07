@@ -148,7 +148,7 @@ static inline void runAction(FiberContext *ctx, RefAction *ra) {
 }
 
 static const uint8_t *find_src_map() {
-    const uint32_t *p = (const uint32_t *)((uint32_t)vmImg->dataEnd & ~0xf);
+    const uint32_t *p = (const uint32_t *)((uintptr_t)vmImg->dataEnd & ~0xf);
     const uint32_t *endP = p + 128;
     while (p < endP) {
         if (p[0] == 0x4d435253 && p[1] == 0x2d4e1588 && p[2] == 0x719986aa)
